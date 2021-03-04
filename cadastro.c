@@ -6,8 +6,10 @@
 typedef struct Person {
     int code;
     char name[50];
-    int age;
-    int phone;
+    char date[8];
+    char phone[19];
+    char email[50];
+    char obser[100];
 } Person;
 
 int add(Person person[VET_Person], int count);
@@ -49,10 +51,14 @@ int add(Person person[VET_Person], int count)
             } else {
                 printf("\nNome: ");
                 scanf("%s", &person[i + count].name);
-                printf("\nIdade: ");
-                scanf("%d", &person[i + count].age);
+                printf("\nEmail:");
+                scanf("%s", &person[i + count].email);
+                printf("\nData de nascimento: ");
+                scanf("%d", &person[i + count].date);
                 printf("\nTelefone: ");
                 scanf("%d", &person[i + count].phone);
+                printf("\nObersacoes:");
+                scanf("%s", &person[i + count].obser);
                 printf("--------------\n");
             }
         }
