@@ -4,6 +4,7 @@
 #include <string.h>
 
 #define VET_Person 50
+//struct //
 typedef struct Person {
     int code;
     char name[50];
@@ -18,6 +19,8 @@ void menu();
 
 int main()
 {
+    /*Coloquei a variavel count pra controlar o numero de contatos adicionado para não exceder o valor máximo do VET_Person
+    e para que fique mais fácil manipular os contatos*/
     int count = 0;
     int op = 1;
     Person person[VET_Person];
@@ -31,15 +34,17 @@ int main()
         }
     }
 }
-
+//Função Menu
 void menu()
 {
     printf("\n1 - Adicionar contato");
     printf("\n0 - Sair\n");
 }
-
+//Função para adicionar um contato//
 int add(Person person[VET_Person], int count)
 {
+    /*coloquei essa variavel pra que o usuario informe quantas pessoas ele quer adicionar no vetor que tem o valor máximo de 50
+    em vez de adicionar tudo de uma vez ele pergunta quantos o usuário quer adicionar*/
     int number;
     printf("Quantas pessoas voce deseja adicionar?");
     scanf("%d", &number);
