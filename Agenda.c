@@ -15,6 +15,7 @@ typedef struct Person {
 } Person;
 
 int add(Person person[VET_Person], int count);
+void list(Person person[VET_Person], int count);
 void menu();
 
 int main()
@@ -30,6 +31,8 @@ int main()
         switch (op) {
         case 1:
             count += add(person, count);
+        case 2:
+            list(person, count);
             break;
         }
     }
@@ -38,6 +41,7 @@ int main()
 void menu()
 {
     printf("\n1 - Adicionar contato");
+    printf("\n2 - Ver lista de contatos");
     printf("\n0 - Sair\n");
 }
 //Função para adicionar um contato//
@@ -72,5 +76,26 @@ int add(Person person[VET_Person], int count)
     } else {
         printf("Numero maximo de contatos atingido");
         return 0;
+    }
+}
+//Função para ver a lista de contatos//
+void list(Person person[VET_Person], int count)
+{
+    //Caso a lista esteja vazia//
+    if (count == 0) {
+        printf("Lista vazia!");
+        getch();
+    } else {
+        for (int i = 0; i < count; i++) {
+            printf("----------------------\n");
+            printf("%d\n", person[i].code);
+            printf("%s\n", person[i].name);
+            printf("%s\n", person[i].email);
+            printf("%s\n", person[i].date);
+            printf("%s\n", person[i].phone);
+            printf("%s\n", person[i].obser);
+            printf("----------------------\n");
+            getch();
+        }
     }
 }
