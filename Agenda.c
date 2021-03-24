@@ -16,6 +16,7 @@ typedef struct Person {
 
 int add(Person person[VET_Person], int count);
 void list(Person person[VET_Person], int count);
+void busca(Person person[VET_Person]);
 void menu();
 
 int main()
@@ -34,14 +35,19 @@ int main()
         case 2:
             list(person, count);
             break;
+        case 3:
+            busca(person);
+            break;
         }
     }
 }
 //Função Menu
 void menu()
 {
+    system("cls");
     printf("\n1 - Adicionar contato");
     printf("\n2 - Ver lista de contatos");
+    printf("\n3 - Buscar contato ");
     printf("\n0 - Sair\n");
 }
 //Função para adicionar um contato//
@@ -98,4 +104,26 @@ void list(Person person[VET_Person], int count)
             getch();
         }
     }
+}
+//Função Busca
+void busca(Person person[VET_Person])
+{
+    int busca;
+    printf("Informe o codigo do contado:");
+    scanf("%d", &busca);
+    //Percorre todos os valores no vetor até achar um que corresponde ao código
+    for (int i = 0; i <= VET_Person; i++) {
+        if (busca == person[i].code) {
+            printf("----------------------\n");
+            printf("%d\n", person[i].code);
+            printf("%s\n", person[i].name);
+            printf("%s\n", person[i].email);
+            printf("%s\n", person[i].date);
+            printf("%s\n", person[i].phone);
+            printf("%s\n", person[i].obser);
+            printf("----------------------\n");
+        }
+    }
+    printf("Nao encontrado!");
+    getch();
 }
