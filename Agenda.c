@@ -17,6 +17,7 @@ typedef struct Person {
 int add(Person person[VET_Person], int count);
 void list(Person person[VET_Person], int count);
 void busca(Person person[VET_Person]);
+void alt(Person person[VET_Person]);
 void menu();
 
 int main()
@@ -38,16 +39,19 @@ int main()
         case 3:
             busca(person);
             break;
+        case 4:
+            alt(person);
+            break;
         }
     }
 }
 //Função Menu
 void menu()
 {
-    system("cls");
     printf("\n1 - Adicionar contato");
     printf("\n2 - Ver lista de contatos");
     printf("\n3 - Buscar contato ");
+    printf("\n4 - Alterar contato");
     printf("\n0 - Sair\n");
 }
 //Função para adicionar um contato//
@@ -126,4 +130,37 @@ void busca(Person person[VET_Person])
     }
     printf("Nao encontrado!");
     getch();
+}
+//Função para alterar contatos
+void alt(Person person[VET_Person])
+{
+    int busca;
+    char namealt[50];
+    char datealt[8];
+    char phonealt[19];
+    char emailalt[50];
+    char obseralt[100];
+    printf("Informe o codigo do contado:");
+    scanf("%d", &busca);
+    for (int i = 0; i <= VET_Person; i++) {
+        if (busca == person[i].code) {
+            printf("\nNome:");
+            scanf("%s", &namealt);
+            strcpy(person[i].name, namealt);
+            printf("\nEmail:");
+            scanf("%s", &emailalt);
+            strcpy(person[i].email, emailalt);
+            printf("\nData:");
+            scanf("%s", &datealt);
+            strcpy(person[i].date, datealt);
+            printf("\nNumero:");
+            scanf("%s", &phonealt);
+            strcpy(person[i].phone, phonealt);
+            printf("\nObservacao:");
+            scanf("%s", &obseralt);
+            strcpy(person[i].obser, obseralt);
+            return;
+        }
+    }
+    printf("Nao encontrado!");
 }
