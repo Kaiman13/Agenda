@@ -18,6 +18,7 @@ int add(Person person[VET_Person], int count);
 void list(Person person[VET_Person], int count);
 void busca(Person person[VET_Person]);
 void alt(Person person[VET_Person]);
+void exc(Person person[VET_Person]);
 void menu();
 
 int main()
@@ -42,6 +43,9 @@ int main()
         case 4:
             alt(person);
             break;
+        case 5:
+            exc(person);
+            break;
         }
     }
 }
@@ -52,6 +56,7 @@ void menu()
     printf("\n2 - Ver lista de contatos");
     printf("\n3 - Buscar contato ");
     printf("\n4 - Alterar contato");
+    printf("\n5 - Excluir contato");
     printf("\n0 - Sair\n");
 }
 //Função para adicionar um contato//
@@ -96,7 +101,7 @@ void list(Person person[VET_Person], int count)
         printf("Lista vazia!");
         getch();
     } else {
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i < count; i++) {
             printf("----------------------\n");
             printf("%d\n", person[i].code);
             printf("%s\n", person[i].name);
@@ -160,6 +165,18 @@ void alt(Person person[VET_Person])
             scanf("%s", &obseralt);
             strcpy(person[i].obser, obseralt);
             return;
+        }
+    }
+    printf("Nao encontrado!");
+}
+void exc(Person person[VET_Person])
+{
+    int busca;
+    printf("Informe o codigo do contado:");
+    scanf("%d", &busca);
+    for (int i = 0; i <= VET_Person; i++) {
+        if (busca == person[i].code) {
+            person[i].code = 0;
         }
     }
     printf("Nao encontrado!");
